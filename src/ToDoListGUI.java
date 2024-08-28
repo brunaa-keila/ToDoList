@@ -38,16 +38,11 @@ public class ToDoListGUI extends JFrame {
         taskList.setBackground(Color.decode("#f0f8ff"));
         taskList.setBorder(BorderFactory.createLineBorder(Color.decode("#4682B4")));
         
-        // Painel inferior com campo de texto e botões
+        // Painel inferior com botões
         JPanel inputPanel = new JPanel();
         inputPanel.setLayout(new BorderLayout());
         inputPanel.setBorder(new EmptyBorder(10, 10, 10, 10));
         inputPanel.setBackground(Color.WHITE);
-        
-        JTextField taskField = new JTextField();
-        taskField.setFont(font);
-        taskField.setBorder(BorderFactory.createLineBorder(Color.decode("#4682B4")));
-        inputPanel.add(taskField, BorderLayout.CENTER);
         
         // Botão Adicionar
         JButton addButton = new JButton("Adicionar");
@@ -79,11 +74,10 @@ public class ToDoListGUI extends JFrame {
         addButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String task = taskField.getText();
-                if (!task.isEmpty()) {
+                String task = JOptionPane.showInputDialog(ToDoListGUI.this, "Digite a tarefa:", "Nova Tarefa", JOptionPane.PLAIN_MESSAGE);
+                if (task != null && !task.trim().isEmpty()) {
                     taskManager.addTask(task);
                     listModel.addElement(task);
-                    taskField.setText("");
                 }
             }
         });
