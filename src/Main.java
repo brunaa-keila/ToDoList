@@ -2,6 +2,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+        new ToDoListGUI();
         Scanner scanner = new Scanner(System.in);
         TaskManager taskManager = new TaskManager();
 
